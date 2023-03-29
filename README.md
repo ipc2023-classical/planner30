@@ -8,7 +8,7 @@ LAPKT aims to make your life easier if your purpose is to create, use or extend 
 
 # Forward-Backward Approximate Novelty Search
 
-Integration of Approximate Novelty Search and Width-Based Backward Search in which we iteratively run the forward and backward version of polynomial BFWS(f5) with novelty based pruning, sequentially increase the number of novelty categories W at each iteration.
+Integration of Approximate Novelty Search and Width-Based Backward Search in which we iteratively run the forward and backward version of polynomial BFWS(f5) with novelty based pruning, sequentially increasing the number of novelty categories W at each iteration.
 
 	Singh, Anubhav, Nir Lipovetzky, Miquel Ramirez, and Javier Segovia-Aguas. 
 	"Approximate novelty search." ICAPS, vol. 31, pp. 349-357. 2021.
