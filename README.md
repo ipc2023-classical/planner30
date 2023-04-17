@@ -17,9 +17,13 @@ Integration of Approximate Novelty Search and Width-Based Backward Search in whi
 	"Width-based backward search." ICAPS, vol. 31, pp. 219-224. 2021.
 
 
-[Apptainer configuration](Apptainer.NoveltyBD)
+[Agile Apptainer configuration](Apptainer.NoveltyBD)
 
 	apptainer build NoveltyBD.sif  Apptainer.NoveltyBD
+
+[Satisficing Apptainer configuration](Apptainer.NoveltyBDAnytime)
+
+	apptainer build NoveltyBDAnytime.sif  Apptainer.NoveltyBDAnytime
 
 AUTHORS
 =======
