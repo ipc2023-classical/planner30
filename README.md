@@ -6,9 +6,9 @@
 LAPKT aims to make your life easier if your purpose is to create, use or extend basic to advanced Automated Planners. It's an open-source Toolkit written in C++ and Python with simple interfaces that give you complete flexibility by decoupling parsers from problem representations and algorithms. It has been succesfully used in embedded systems, webservices, compilations, replanning and contains some of the high-performance planners from the last International Planning Competition 2014.
 
 
-# Bidirectional Novelty
+# Forward Backward Approximate Novelty Search
 
-Integration of Approximate Novelty Search and Width-Based Backward Search in which we iteratively run the bi-directional polynomial BFWS(f5) with novelty based pruning, sequentially increasing the number of novelty categories W at each iteration.
+Integration of Approximate Novelty Search and Width-Based Backward Search in which we iteratively run the forward backward polynomial BFWS(f5) with novelty based pruning, sequentially increasing the number of novelty categories W at each iteration.
 
 	Singh, Anubhav, Nir Lipovetzky, Miquel Ramirez, and Javier Segovia-Aguas. 
 	"Approximate novelty search." ICAPS, vol. 31, pp. 349-357. 2021.

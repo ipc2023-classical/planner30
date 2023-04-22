@@ -56,8 +56,8 @@ Stage: run
 
 ## Define meta data
 %labels
-Name        Bidirectional Novelty Search Anytime
-Description The anytime configuration of the planner. It uses Bidirectional Novelty Search search to find the first satisficing plan. After which, it switches to lazy wastar with a upper bound on the plan cost, and continues to optimize the solutions until timeout.
+Name        Forward Backward Anytime Novelty Search 
+Description The anytime configuration of the planner. It uses Forward Backward Novelty Search search to find the first satisficing plan. After which, it switches to lazy wastar with a upper bound on the plan cost, and continues to optimize the solutions until timeout.
 Authors     Anubhav Singh <anubhavs@student.unimelb.edu.au>, Chao Lie <clei1@student.unimelb.edu.au>, Nir Lipovetzky <nir.lipovetzky@unimelb.edu.au>, Miquel Ramirez <miquel.ramirez@unimelb.edu.au>, Javier Segovia-Aguas <javier.segovia@upf.edu>
 License     MIT
 Tracks      Satisficing

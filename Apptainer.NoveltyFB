@@ -47,8 +47,8 @@ Stage: run
 
 ## Define meta data
 %labels
-Name        Bidirectional Novelty Search
-Description Bi-directional, front-to-end, Approximate BFWS with novelty approximation and goal count heuristics, f=<#w,#g>, see ICAPS 2021 papers on Approximate Novelty Search and Width-based backward search
+Name        Forward Backward Novelty Search
+Description Forward Backward Approximate BFWS with novelty approximation and goal count heuristics, f=<#w,#g>, see ICAPS 2021 papers on Approximate Novelty Search and Width-based backward search
 Authors     Anubhav Singh <anubhavs@student.unimelb.edu.au>, Chao Lie <clei1@student.unimelb.edu.au>, Nir Lipovetzky <nir.lipovetzky@unimelb.edu.au>, Miquel Ramirez <miquel.ramirez@unimelb.edu.au>, Javier Segovia-Aguas <javier.segovia@upf.edu>
 License     MIT
 Tracks      Agile
