@@ -4,7 +4,7 @@ MIT License
 Copyright (c) 2022 Anubhav Singh(anubhav.singh.er@pm.me)
 """
 
-from os import access, X_OK, environ, pathsep
+from os import access, X_OK, environ, pathsep, system
 from contextlib import contextmanager
 from sre_constants import SUCCESS
 from time import time, process_time
@@ -81,6 +81,9 @@ class Planner:
         self.config = config
         self._spawn_container(config['planner']['value'])
         self._configure_planner()
+        self.planner_instance.set_ignore_action_costs(
+            config['actual_action_cost_in_output']['value']
+        )
         with time_taken('LAPKT_PARSE_GROUND_TASK'):
             self._load_problem()
     
@@ -110,13 +113,13 @@ class Planner:
             try:
                 from .pddl.fd import default as process_task
             except Exception:
-                print('FD translator is not installed!')
+                print('FD PDDL translator is not installed!')
                 exit()
         else:
             # We can add options for procedurally generated problems here
             raise ValueError(
                 "The value doesn't match supported parsers -" +
-                " Tarski/FF/FD")
+                "FD")
 
         if (self.config['grounder']['value']
               in ['Tarski', 'FD']):
@@ -159,6 +162,18 @@ class Planner:
             bool(not (self.config.get('no_match_tree',
                       None) and self.config['no_match_tree']['value'])))
         self.planner_instance.solve()
+        
+        if self.config["anytime_fd"]['value']!=None:
+            with time_taken("Running FD"):
+                fd_cmd =  "python3 {} --plan-file {} --portfolio-bound {} {} {}".format(
+                    self.config["anytime_fd"]['value'],
+                    self.config["plan_file"]['value'], 
+                    int(self.planner_instance.plan_cost), 
+                    self.config['domain']['value'], 
+                    self.config['problem']['value']
+                )
+                system(fd_cmd)
+            
         return SUCCESS
 
     def _spawn_container(self, name):

@@ -241,6 +241,11 @@ public:
   virtual void setup(bool gen_match_tree = true);
   void solve();
 
+  void set_ignore_action_costs(bool value) {
+   fwd_interface.m_ignore_action_costs = value;
+   bwd_interface.m_ignore_action_costs = value;
+  }
+
   std::string m_log_filename;
   std::string m_plan_filename;
   std::string m_search_alg;
