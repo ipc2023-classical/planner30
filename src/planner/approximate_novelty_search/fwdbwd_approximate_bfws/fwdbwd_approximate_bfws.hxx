@@ -289,7 +289,6 @@ protected:
   template <typename Search_Engine1, typename Search_Engine2>
   float do_search_iterative_fwd_bwd(
     Search_Engine1 &engine1, Search_Engine2 &engine2, aptk::STRIPS_Problem &plan_prob,
-    std::ofstream &plan_stream, 
     bool has_arity_2 = true, float prev_time_taken = 0.0,
     Gen_Lms_FwdBwd* gen_lms = NULL
     );
