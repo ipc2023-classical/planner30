@@ -125,7 +125,7 @@ template <typename Search_Engine1, typename Search_Engine2>
 float FwdBwd_Approximate_BFWS::do_search_iterative_fwd_bwd(
   Search_Engine1 &engine1, Search_Engine2 &engine2, 
   aptk::STRIPS_Problem &plan_prob,
-  std::ofstream &plan_stream, bool has_arity_2, float prev_time_taken,
+  bool has_arity_2, float prev_time_taken,
   Gen_Lms_FwdBwd* gen_lms
   )
 {
@@ -174,6 +174,8 @@ float FwdBwd_Approximate_BFWS::do_search_iterative_fwd_bwd(
 
   if (m_found_plan)
   {
+    std::ofstream plan_stream;
+    plan_stream.open(m_plan_filename);
     details << "Plan found with cost: " << m_cost << std::endl;
     for (unsigned k = 0; k < plan.size(); k++)
     {
@@ -195,6 +197,7 @@ float FwdBwd_Approximate_BFWS::do_search_iterative_fwd_bwd(
     aptk::report_memory_usage();
 #endif
     details.close();
+    plan_stream.close();
     return total_time;
   }
   else
@@ -223,9 +226,6 @@ void FwdBwd_Approximate_BFWS::solve()
   aptk::STRIPS_Problem *prob = fwd_interface.instance();
 
   Fwd_Search_Problem search_prob(prob);
-
-  std::ofstream plan_stream;
-  plan_stream.open(m_plan_filename);
 
   prob->compute_edeletes();
 
@@ -383,11 +383,9 @@ void FwdBwd_Approximate_BFWS::solve()
     bfs_engine2.set_use_novelty_pruning_bwd(true);
 
     float bfs_t = do_search_iterative_fwd_bwd(
-      bfs_engine, bfs_engine2, *prob, plan_stream, false, 0.0, &gen_lms_fwdbwd);
+      bfs_engine, bfs_engine2, *prob, false, 0.0, &gen_lms_fwdbwd);
 
     std::cout << "k-BFWS forward backward iterative search completed in " << bfs_t << " secs" << std::endl;
-
-    plan_stream.close();
 
     return;
   }
@@ -441,8 +439,6 @@ void FwdBwd_Approximate_BFWS::solve()
   //     std::cout << "DUAL BFWS search completed in " << bfs_t << " secs" << std::endl;
   //   }
   // }
-
-  plan_stream.close();
 
   // if (m_anytime and (m_cost < infty))
   // {
